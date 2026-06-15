@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Language Flip Cards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Language flashcard workspace">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Language Flip Cards</p>
+            <h1>Guess the translation, then flip to check.</h1>
+          </div>
+          <button class="icon-button" id="nextIconButton" type="button" aria-label="Next card" title="Next card">
+            <span aria-hidden="true">&#8635;</span>
+          </button>
+        </div>
+
+        <div class="card-area">
+          <button class="flip-card" id="flipCard" type="button" aria-label="Flip translation card">
+            <span class="card-face card-front">
+              <span class="face-label">English</span>
+              <span class="sentence" id="englishText"></span>
+              <span class="hint">Click to flip</span>
+            </span>
+            <span class="card-face card-back">
+              <span class="face-label" id="languageLabel"></span>
+              <span class="sentence translated" id="translatedText"></span>
+              <span class="hint">Click to return</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="controls" aria-label="Card controls">
+          <div class="segmented" role="tablist" aria-label="Choose translation language">
+            <button class="segment active" type="button" data-language="mandarin" role="tab" aria-selected="true">Mandarin</button>
+            <button class="segment" type="button" data-language="german" role="tab" aria-selected="false">German</button>
+          </div>
+
+          <div class="practice-row">
+            <button class="next-button" id="nextButton" type="button">Next Card</button>
+            <button class="history-button" id="historyButton" type="button" aria-expanded="false">History</button>
+            <p class="deck-count" id="deckCount"></p>
+          </div>
+
+          <div class="history-panel" id="historyPanel" hidden>
+            <div class="history-topline">
+              <h2>History</h2>
+              <span id="historyTotal"></span>
+            </div>
+            <div class="history-list" id="historyList" aria-label="Cards already shown"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="editor" aria-label="Add your own card">
+        <h2>Add a card</h2>
+        <form id="cardForm">
+          <label>
+            English sentence
+            <textarea id="newEnglish" rows="3" placeholder="I would like a cup of tea."></textarea>
+          </label>
+          <p class="form-note">Mandarin and German will be translated by the backend.</p>
+          <button class="primary-button" id="addButton" type="submit">Translate & Add</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
